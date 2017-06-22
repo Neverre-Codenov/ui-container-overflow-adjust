@@ -21,11 +21,12 @@ function adjustFontsize () {
     Array.prototype.forEach.call(
         BOX_LIST,
         function( box ) {
-            for ( ; size > MIN_FONT_SIZE; size -= STEP_SIZE ) {
+            box.style.fontSize = size + "px";
+            while ( size > MIN_FONT_SIZE ) {
                 if( isOverflowed(box) ) {
+                    size -= STEP_SIZE;
                     box.style.fontSize = size + "px";
                 } else {
-                    size += STEP_SIZE;
                     break;
                 }
             }
